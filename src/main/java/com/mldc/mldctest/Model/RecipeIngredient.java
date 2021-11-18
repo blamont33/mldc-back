@@ -6,6 +6,8 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
@@ -17,10 +19,13 @@ import com.mldc.mldctest.Enum.Measure;
 public class RecipeIngredient implements Serializable {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(nullable = false, updatable = false)
+    private Long id;
+
     @ManyToOne
     private Ingredient ingredient;
 
-    @Id
     @ManyToOne
     private Recipe recipe;
 

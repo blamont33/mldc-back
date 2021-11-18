@@ -1,5 +1,6 @@
 package com.mldc.mldctest.controller;
 
+import com.mldc.mldctest.DTO.RecipeDTO;
 import com.mldc.mldctest.Model.Recipe;
 import com.mldc.mldctest.service.RecipeService;
 
@@ -22,9 +23,8 @@ public class RecipeResource {
     }
     
     @PostMapping("add")
-    public ResponseEntity<Recipe>addRecipe(@RequestBody Recipe recipe) {
+    public ResponseEntity<Recipe>addRecipe(@RequestBody RecipeDTO recipe) {
         Recipe newRecipe = recipeService.addRecipe(recipe);
         return new ResponseEntity<>(newRecipe, HttpStatus.CREATED);
-
     }
 }

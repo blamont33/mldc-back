@@ -1,6 +1,8 @@
 package com.mldc.mldctest.service;
 
+import com.mldc.mldctest.DTO.RecipeDTO;
 import com.mldc.mldctest.Model.Recipe;
+import com.mldc.mldctest.Model.RecipeIngredient;
 import com.mldc.mldctest.repository.RecipeIngredientRepo;
 import com.mldc.mldctest.repository.RecipeRepo;
 
@@ -19,8 +21,14 @@ public class RecipeService {
     }
 
     // create recipe
-    public Recipe addRecipe(Recipe recipe) {
-        Long recipeId = recipeRepo.save(recipe).getId();
-        return 
+    public Recipe addRecipe(RecipeDTO recipe) {
+        Recipe newRecipe = new Recipe(recipe.getName(), recipe.getLink(), recipe.getNbParts(), recipe.getMaking(), recipe.getCalorie());
+        Recipe savedRecipe = this.recipeRepo.save(newRecipe);
+
+        for (RecipeIngredient i : recipe.getIngredients()) {
+            this.recipeIngredientRepo.save(new RecipeIngredient(i.getIngredient(), savedRecipe, i.getQuantity(), i.getMeasure()));
+        }
+
+        return savedRecipe;
     }
 }
