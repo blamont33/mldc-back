@@ -1,4 +1,4 @@
-package com.mldc.mldc.Model;
+package com.mldc.mldcBack.Model;
 
 import java.io.Serializable;
 import java.util.Date;

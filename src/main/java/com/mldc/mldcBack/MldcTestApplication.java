@@ -1,4 +1,4 @@
-package com.mldc.mldc;
+package com.mldc.mldcBack;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

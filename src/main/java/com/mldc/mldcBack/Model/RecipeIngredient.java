@@ -1,4 +1,4 @@
-package com.mldc.mldc.Model;
+package com.mldc.mldcBack.Model;
 
 import java.io.Serializable;
 
@@ -12,7 +12,7 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
-import com.mldc.mldc.Enum.Measure;
+import com.mldc.mldcBack.Enum.Measure;
 
 @Entity
 @Table

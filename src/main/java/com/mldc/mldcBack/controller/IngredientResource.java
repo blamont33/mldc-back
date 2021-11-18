@@ -1,9 +1,9 @@
-package com.mldc.mldc.controller;
+package com.mldc.mldcBack.controller;
 
 import java.util.List;
 
-import com.mldc.mldc.Model.Ingredient;
-import com.mldc.mldc.service.IngredientService;
+import com.mldc.mldcBack.Model.Ingredient;
+import com.mldc.mldcBack.service.IngredientService;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;

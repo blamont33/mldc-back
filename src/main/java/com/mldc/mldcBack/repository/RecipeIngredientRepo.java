@@ -1,6 +1,6 @@
-package com.mldc.mldc.repository;
+package com.mldc.mldcBack.repository;
 
-import com.mldc.mldc.Model.RecipeIngredient;
+import com.mldc.mldcBack.Model.RecipeIngredient;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 

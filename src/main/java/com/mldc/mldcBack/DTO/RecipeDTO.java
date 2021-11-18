@@ -1,11 +1,11 @@
-package com.mldc.mldc.DTO;
+package com.mldc.mldcBack.DTO;
 
 import java.util.List;
 
 import javax.persistence.Lob;
 
-import com.mldc.mldc.Enum.Measure;
-import com.mldc.mldc.Model.RecipeIngredient;
+import com.mldc.mldcBack.Enum.Measure;
+import com.mldc.mldcBack.Model.RecipeIngredient;
 
 public class RecipeDTO {
     private String name;
