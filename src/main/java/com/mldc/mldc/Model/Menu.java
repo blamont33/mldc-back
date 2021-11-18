@@ -1,4 +1,4 @@
-package com.mldc.mldctest.Model;
+package com.mldc.mldc.Model;
 
 import java.io.Serializable;
 import java.util.Date;

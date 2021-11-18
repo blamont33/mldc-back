@@ -1,10 +1,10 @@
-package com.mldc.mldctest.service;
+package com.mldc.mldc.service;
 
-import com.mldc.mldctest.DTO.RecipeDTO;
-import com.mldc.mldctest.Model.Recipe;
-import com.mldc.mldctest.Model.RecipeIngredient;
-import com.mldc.mldctest.repository.RecipeIngredientRepo;
-import com.mldc.mldctest.repository.RecipeRepo;
+import com.mldc.mldc.DTO.RecipeDTO;
+import com.mldc.mldc.Model.Recipe;
+import com.mldc.mldc.Model.RecipeIngredient;
+import com.mldc.mldc.repository.RecipeIngredientRepo;
+import com.mldc.mldc.repository.RecipeRepo;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

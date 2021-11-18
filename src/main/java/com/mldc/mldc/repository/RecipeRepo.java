@@ -1,6 +1,6 @@
-package com.mldc.mldctest.repository;
+package com.mldc.mldc.repository;
 
-import com.mldc.mldctest.Model.Recipe;
+import com.mldc.mldc.Model.Recipe;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 

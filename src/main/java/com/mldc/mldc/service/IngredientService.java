@@ -1,10 +1,10 @@
-package com.mldc.mldctest.service;
+package com.mldc.mldc.service;
 
 import java.util.List;
 import java.util.Optional;
 
-import com.mldc.mldctest.Model.Ingredient;
-import com.mldc.mldctest.repository.IngredientRepo;
+import com.mldc.mldc.Model.Ingredient;
+import com.mldc.mldc.repository.IngredientRepo;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

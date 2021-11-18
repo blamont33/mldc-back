@@ -1,8 +1,8 @@
-package com.mldc.mldctest.controller;
+package com.mldc.mldc.controller;
 
-import com.mldc.mldctest.DTO.RecipeDTO;
-import com.mldc.mldctest.Model.Recipe;
-import com.mldc.mldctest.service.RecipeService;
+import com.mldc.mldc.DTO.RecipeDTO;
+import com.mldc.mldc.Model.Recipe;
+import com.mldc.mldc.service.RecipeService;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
