@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Optional;
 
 import com.mldc.mldcBack.Model.Ingredient;
+import com.mldc.mldcBack.interfaces.IngredientProjection;
 import com.mldc.mldcBack.repository.IngredientRepo;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,7 +34,7 @@ public class IngredientService {
     }
 
     // Get all ingredients
-    public List<Ingredient> getIngredients() {
-        return ingredientRepo.findAll();
+    public List<IngredientProjection> getIngredients() {
+        return ingredientRepo.getAllIngredients();
     }
 }

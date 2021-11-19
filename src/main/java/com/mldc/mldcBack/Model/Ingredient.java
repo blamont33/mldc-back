@@ -3,6 +3,7 @@ package com.mldc.mldcBack.Model;
 import java.io.Serializable;
 import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -22,8 +23,13 @@ public class Ingredient implements Serializable {
     @Column(nullable = false, unique = true)
     private String name;
 
-    @OneToMany(mappedBy = "ingredient")
+    @OneToMany(mappedBy = "ingredient", cascade = CascadeType.ALL)
     private Set<RecipeIngredient> recipeIngredients;
+
+    public Ingredient(Long id, String name) {
+        this.id = id;
+        this.name = name;
+    }
 
     public Ingredient() {
     }

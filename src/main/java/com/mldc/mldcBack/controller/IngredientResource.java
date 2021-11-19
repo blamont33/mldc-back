@@ -3,6 +3,7 @@ package com.mldc.mldcBack.controller;
 import java.util.List;
 
 import com.mldc.mldcBack.Model.Ingredient;
+import com.mldc.mldcBack.interfaces.IngredientProjection;
 import com.mldc.mldcBack.service.IngredientService;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,10 +32,9 @@ public class IngredientResource {
     }
 
     @GetMapping
-    public ResponseEntity<List<Ingredient>> getIngredients() {
-        List<Ingredient> ingredients = ingredientService.getIngredients();
+    public ResponseEntity<List<IngredientProjection>> getIngredients() {
+        List<IngredientProjection> ingredients = ingredientService.getIngredients();
         return new ResponseEntity<>(ingredients, HttpStatus.OK);
     }
-
 
 }
