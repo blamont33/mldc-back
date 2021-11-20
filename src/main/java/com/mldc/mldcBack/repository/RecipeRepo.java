@@ -12,4 +12,7 @@ public interface RecipeRepo extends JpaRepository<Recipe, Long> {
 
     @Query("Select r from Recipe r")
     List<RecipeProjection> getAllRecipes();
+
+    @Query("SELECT r from Recipe r WHERE r.id in (?1)")
+    List<RecipeProjection> getRecipesById(List<Long> id);
 }

@@ -11,6 +11,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.PrePersist;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -19,7 +20,8 @@ import javax.persistence.TemporalType;
 @Table
 public class Menu implements Serializable {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @SequenceGenerator(name="menu_sequence", sequenceName = "menu_sequence", allocationSize = 1)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "menu_sequence")
     @Column(nullable = false, updatable = false)
     private Long id;
 

@@ -10,13 +10,15 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 @Entity
 @Table
 public class Ingredient implements Serializable {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @SequenceGenerator(name="ingredient_sequence", sequenceName = "ingredient_sequence", allocationSize = 1)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "ingredient_sequence")
     @Column(nullable = false, updatable = false)
     private Long id;
 

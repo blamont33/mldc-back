@@ -37,4 +37,9 @@ public class IngredientService {
     public List<IngredientProjection> getIngredients() {
         return ingredientRepo.getAllIngredients();
     }
+
+    // Get ingredients by recipe id
+    public List<IngredientProjection> getIngrendientsByRecipe(Long id) {
+        return ingredientRepo.getIngrendientsByRecipe(id);
+    }
 }

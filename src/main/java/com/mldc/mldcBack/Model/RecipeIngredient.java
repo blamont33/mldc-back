@@ -10,6 +10,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 import com.mldc.mldcBack.Enum.Measure;
@@ -19,7 +20,8 @@ import com.mldc.mldcBack.Enum.Measure;
 public class RecipeIngredient implements Serializable {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @SequenceGenerator(name="recipeIngredient_sequence", sequenceName = "recipeIngredient_sequence", allocationSize = 1)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "recipeIngredient_sequence")
     @Column(nullable = false, updatable = false)
     private Long id;
 

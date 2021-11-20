@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -25,16 +26,22 @@ public class IngredientResource {
         this.ingredientService = ingredientService;
     }
 
+    @GetMapping
+    public ResponseEntity<List<IngredientProjection>> getIngredients() {
+        List<IngredientProjection> ingredients = ingredientService.getIngredients();
+        return new ResponseEntity<>(ingredients, HttpStatus.OK);
+    }
+
     @PostMapping("/add")
     public ResponseEntity<Ingredient> addIngredient(@RequestBody Ingredient ingredient) {
         Ingredient newIngredient = ingredientService.addIngredient(ingredient);
         return new ResponseEntity<>(newIngredient, HttpStatus.CREATED);
     }
 
-    @GetMapping
-    public ResponseEntity<List<IngredientProjection>> getIngredients() {
-        List<IngredientProjection> ingredients = ingredientService.getIngredients();
-        return new ResponseEntity<>(ingredients, HttpStatus.OK);
+    @GetMapping("/byRecipe/{id}")
+    public ResponseEntity<List<IngredientProjection>> getIngrendientsByRecipe(@PathVariable("id") Long id) {
+        List<IngredientProjection> ingredientList = ingredientService.getIngrendientsByRecipe(id);
+        return new ResponseEntity<>(ingredientList, HttpStatus.OK);
     }
 
 }

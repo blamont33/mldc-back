@@ -17,4 +17,7 @@ public interface IngredientRepo extends JpaRepository<Ingredient, Long> {
 
     @Query("Select i from Ingredient i")
     List<IngredientProjection> getAllIngredients();
+
+    @Query("Select i from Ingredient i join i.recipeIngredients ri where ri.recipe.id = ?1 ")
+    List<IngredientProjection> getIngrendientsByRecipe(Long id);
 }
