@@ -16,11 +16,12 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+
 @Entity
 @Table
 public class Menu implements Serializable {
     @Id
-    @SequenceGenerator(name="menu_sequence", sequenceName = "menu_sequence", allocationSize = 1)
+    @SequenceGenerator(name = "menu_sequence", sequenceName = "menu_sequence", allocationSize = 1)
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "menu_sequence")
     @Column(nullable = false, updatable = false)
     private Long id;
@@ -33,6 +34,10 @@ public class Menu implements Serializable {
     private Set<Recipe> recipes;
 
     public Menu() {
+    }
+
+    public Menu(Set<Recipe> recipes) {
+        this.recipes = recipes;
     }
 
     public Menu(Date lastUpdate, Set<Recipe> recipes) {

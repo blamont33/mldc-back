@@ -9,17 +9,19 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.Lob;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 @Entity
 @Table
 public class Recipe implements Serializable {
     @Id
-    @SequenceGenerator(name="recipe_sequence", sequenceName = "recipe_sequence", allocationSize = 1)
+    @SequenceGenerator(name = "recipe_sequence", sequenceName = "recipe_sequence", allocationSize = 1)
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "recipe_sequence")
     @Column(nullable = false, updatable = false)
     private Long id;
@@ -31,12 +33,13 @@ public class Recipe implements Serializable {
     @Column(nullable = false)
     private int nbParts;
 
-    @Lob
+    @Column(length = 1000)
     private String making;
 
     private int calorie;
 
     @OneToMany(mappedBy = "recipe", cascade = CascadeType.ALL)
+    @JsonIgnoreProperties("recipe")
     Set<RecipeIngredient> recipeIngredients;
 
     @ManyToMany(mappedBy = "recipes", cascade = CascadeType.ALL)
@@ -120,6 +123,7 @@ public class Recipe implements Serializable {
         this.recipeIngredients = recipeIngredients;
     }
 
+    @JsonBackReference
     public Set<Menu> getMenus() {
         return menus;
     }

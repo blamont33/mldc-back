@@ -13,6 +13,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.mldc.mldcBack.Enum.Measure;
 
 @Entity
@@ -20,15 +21,17 @@ import com.mldc.mldcBack.Enum.Measure;
 public class RecipeIngredient implements Serializable {
 
     @Id
-    @SequenceGenerator(name="recipeIngredient_sequence", sequenceName = "recipeIngredient_sequence", allocationSize = 1)
+    @SequenceGenerator(name = "recipeIngredient_sequence", sequenceName = "recipeIngredient_sequence", allocationSize = 1)
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "recipeIngredient_sequence")
     @Column(nullable = false, updatable = false)
     private Long id;
 
     @ManyToOne
+    @JsonIgnoreProperties("recipeIngredients")
     private Ingredient ingredient;
 
     @ManyToOne
+    @JsonIgnoreProperties("recipeIngredients")
     private Recipe recipe;
 
     private float quantity;
@@ -54,6 +57,7 @@ public class RecipeIngredient implements Serializable {
     public void setIngredient(Ingredient ingredient) {
         this.ingredient = ingredient;
     }
+
 
     public Recipe getRecipe() {
         return recipe;
