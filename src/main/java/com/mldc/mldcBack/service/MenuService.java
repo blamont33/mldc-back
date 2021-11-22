@@ -27,7 +27,7 @@ public class MenuService {
         return menuRepo.save(menu);
     }
 
-    // Get all menus by date
+    // Get all menus
     public List<MenuProjection> getAllMenus() {
         return menuRepo.getAllMenus();
 
@@ -35,7 +35,13 @@ public class MenuService {
 
     // Get menu by Id
     public Optional<Menu> getMenuById(Long id) {
-        return menuRepo.findById(id);
+        Optional<Menu> menu = menuRepo.findById(id);
+        if (menu.isPresent()) {
+            return menuRepo.findById(id);
+        } else {
+            throw new IllegalStateException("The menu with id " + id + " doesn't exists");
+        }
+
     }
 
 }

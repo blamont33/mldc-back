@@ -40,6 +40,12 @@ public class IngredientService {
 
     // Get ingredients by recipe id
     public List<IngredientProjection> getIngrendientsByRecipe(Long id) {
-        return ingredientRepo.getIngrendientsByRecipe(id);
+        boolean exists = ingredientRepo.existsById(id);
+        if (!exists) {
+            throw new IllegalStateException("The recipe with id " + id + " doesn't exists");
+        } else {
+            return ingredientRepo.getIngrendientsByRecipe(id);
+        }
+
     }
 }

@@ -30,9 +30,9 @@ public class RecipeService {
     @Transactional
     public Recipe addRecipe(RecipeDTO recipe) {
         if (recipe.getName() == null) {
-            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Le nom est obligatoire");
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Name is mandatory");
         } else if (recipe.getNbParts() == 0) {
-            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Le nombre de parts est obligatoire");
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "the number of parts is mandatory");
         } else {
             Recipe newRecipe = new Recipe(recipe.getName(), recipe.getLink(), recipe.getNbParts(), recipe.getMaking(),
                     recipe.getCalorie());
@@ -53,15 +53,19 @@ public class RecipeService {
         return recipeRepo.getAllRecipes();
     }
 
-    // Get recipes by id
-    @Transactional
+    // Get multiple recipes by id
     public List<RecipeProjection> getRecipesById(List<Long> id) {
         return recipeRepo.getRecipesById(id);
     }
 
     // Delete recipe
     public void deleteRecipe(Long id) {
-        recipeRepo.deleteById(id);
-        ;
+        boolean exists = recipeRepo.existsById(id);
+        if (!exists) {
+            throw new IllegalStateException("The recipe with id " + id + " does not exists");
+        } else {
+            recipeRepo.deleteById(id);
+        }
+
     }
 }
